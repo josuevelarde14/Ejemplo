@@ -1,0 +1,3 @@
+6    zanahoria
+7    fideos
+8    camote

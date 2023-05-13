@@ -1,0 +1,4 @@
+1	papas
+2	aji
+3	lechuga
+4	tomate
