@@ -1,47 +1,41 @@
-class Libro:
-    def __init__(self, titulo, autor):
+class Cancion:
+    def __init__(self, titulo, artista, album, duracion):
         self.titulo = titulo
-        self.autor = autor
-        self.disponible = True
+        self.artista = artista
+        self.album = album
+        self.duracion = duracion
 
-class Biblioteca:
+class BibliotecaMusical:
     def __init__(self):
-        self.libros = []
+        self.canciones = []
 
-    def agregar_libro(self, libro):
-        self.libros.append(libro)
+    def agregar_cancion(self, cancion):
+        self.canciones.append(cancion)
 
-    def buscar_libro(self, clave):
-        for libro in self.libros:
-            if clave in libro.titulo or clave in libro.autor:
-                print(f"{libro.titulo} de {libro.autor}")
-    
-    def prestar_libro(self, clave):
-        for libro in self.libros:
-            if clave in libro.titulo and libro.disponible:
-                libro.disponible = False
-                print(f"El libro {libro.titulo} ha sido prestado")
-                return
-        print("El libro no esta disponible")
+    def buscar_cancion(self, clave):
+        for cancion in self.canciones:
+            if clave in cancion.titulo or clave in cancion.artista or clave in cancion.album:
+                print(f"{cancion.titulo} - {cancion.artista}")
 
-    def devolver_libro(self, clave):
-        for libro in self.libros:
-            if clave in libro.titulo and not libro.disponible:
-                libro.disponible = True
-                print(f"El libro {libro.titulo} ha sido devuelto")
-                return
-        print("El libro no fue prestado o no se encuentra en la biblioteca")
-        
-biblioteca = Biblioteca()
+    def crear_lista_reproduccion(self, nombre):
+        lista_reproduccion = []
+        for cancion in self.canciones:
+            if nombre.lower() in cancion.titulo.lower() or nombre.lower() in cancion.artista.lower() or nombre.lower() in cancion.album.lower():
+                lista_reproduccion.append(cancion)
+        return lista_reproduccion
 
-libro1 = Libro("Harry Potter y la piedra filosofal", "J.K. Rowling")
-libro2 = Libro("El principito", "Antoine de Saint-Exupéry")
-libro3 = Libro("1984", "George Orwell")
+biblioteca_musical = BibliotecaMusical()
 
-biblioteca.agregar_libro(libro1)
-biblioteca.agregar_libro(libro2)
-biblioteca.agregar_libro(libro3)
+cancion1 = Cancion("Bohemian Rhapsody", "Queen", "A Night at the Opera", "6:07")
+cancion2 = Cancion("Hotel California", "Eagles", "Hotel California", "6:30")
+cancion3 = Cancion("Imagine", "John Lennon", "Imagine", "3:04")
 
-biblioteca.buscar_libro("El principito")
-biblioteca.prestar_libro("1984")
-biblioteca.devolver_libro("1984")
+biblioteca_musical.agregar_cancion(cancion1)
+biblioteca_musical.agregar_cancion(cancion2)
+biblioteca_musical.agregar_cancion(cancion3)
+
+biblioteca_musical.buscar_cancion("Imagine")
+
+lista_reproduccion = biblioteca_musical.crear_lista_reproduccion("hotel")
+for cancion in lista_reproduccion:
+    print(f"{cancion.titulo} - {cancion.artista}")
