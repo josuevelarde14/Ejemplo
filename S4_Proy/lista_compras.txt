@@ -1,0 +1,4 @@
+cebolla,3
+atun,6
+papa,2
+tomate,3
