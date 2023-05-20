@@ -46,3 +46,8 @@ biblioteca_musical.buscar_cancion("Imagine")
 lista_reproduccion = biblioteca_musical.crear_lista_reproduccion("Rels B")
 for cancion in lista_reproduccion:
     print(f"{cancion.titulo} - {cancion.artista}")
+
+archivo=open("./Proyecto_1/Listadereproduccion.txt","w")
+for cancion in lista_reproduccion:
+    archivo.write(f"{cancion.titulo} - {cancion.artista}\n")
+archivo.close()
