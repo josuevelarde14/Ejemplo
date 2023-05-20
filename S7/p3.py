@@ -3,5 +3,3 @@ try:
 except ZeroDivisionError:
     print("ingresa una división valida")
 print(x)
-
-
